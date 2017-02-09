@@ -1,6 +1,6 @@
 # Simple-make-and-Makefile-tutorial
 
-![Deathly Hallows](https://images.moviepilot.com/images/c_limit,q_auto,w_710/deathly_hallows_by_mad42sam-d4jj75y-the-deathly-hallows-mean-so-much-more-in-cool-harry-potter-fan-theory-png-148255/artwork-mad42sam-at-deviantart.jpg)  
+![Deathly Hallows](http://bit.ly/2k7EA6R)  
 
 *To prepare to use make, you must write a file called the makefile that describes the relationships among files in your program and provides commands for updating each file. In a program, typically, the executable file is updated from object files, which are in turn made by compiling source files.*
 
@@ -79,7 +79,7 @@ After __recompiling__ whichever object files need it, *make* decides whether to 
 *If you want to use a nonstandard name for your makefile, you can specify the makefile name with the ‘-f’ or ‘--file’ option. The arguments ‘-f name’ or ‘--file=name’ tell make to read the file name as the makefile. If you use more than one ‘-f’ or ‘--file’ option, you can specify several makefiles. All the makefiles are effectively concatenated in the order specified*
  
  
-## The Lab assigment for kernel module programming
+## Yet another example (Kernel Module Programming)
 
 __The hello.c__ (*Dont yet get lost in this just a sassy example*)
 ```C
@@ -109,10 +109,10 @@ all:
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 ```
-__Recursive Use of make__
-make Deduce the Recipes
+-*make* Deduce the Recipes
 When a ‘.c’ file is used automatically in this way, it is also automatically added to the list of prerequisites. We can therefore omit the ‘.c’ files from the prerequisites, provided we omit the recipe. 
 
+__Recursive Use of make__
 
 
 
