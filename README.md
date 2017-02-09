@@ -109,7 +109,7 @@ all:
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 ```
-Kernel Makefiles are part of the kbuild system, documented in various places on the web, for example [The relevant excerpt is here:](http://lwn.net/Articles/21835/) 
+Kernel Makefiles are part of the kbuild system, documented in various places on the web, for example [The relevant excerpt is here:](http://lwn.net/Articles/21835/)  
 Goal definitions are the main part (heart) of the kbuild Makefile. These lines define the files to be built, any special compilation options, and any subdirectories to be entered recursively.  
 The most simple kbuild makefile contains one line:  
 
@@ -153,7 +153,6 @@ clean:
 5. Generating Prerequisites Automatically
 6. How make Reads a Makefile
 
-__INFO that you might want to know__  
-1. cc -c  Compile or assemble the source files, but do not link.The linking stage simply is not done.The ultimate output is in the form of an object file for each source file.  
-2. __*make* Deduce the Recipes__
-When a ‘.c’ file is used automatically in this way, it is also automatically added to the list of prerequisites. We can therefore omit the ‘.c’ files from the prerequisites, provided we omit the recipe. 
+- __Some information that you might want to know__  
+1. __cc -c__  Compile or assemble the source files, but do not link.The linking stage simply is not done.The ultimate output is in the form of an object file for each source file.  
+2. __*make* Deduce the Recipes__ When a ‘.c’ file is used automatically in this way, it is also automatically added to the list of prerequisites. We can therefore omit the ‘.c’ files from the prerequisites, provided we omit the recipe. 
