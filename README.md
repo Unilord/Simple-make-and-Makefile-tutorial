@@ -153,6 +153,10 @@ clean:
 5. Generating Prerequisites Automatically
 6. How make Reads a Makefile
 
-- __Some information that you might want to know__  
+ __Some information that you might want to know__  
 1. __cc -c__  Compile or assemble the source files, but do not link.The linking stage simply is not done.The ultimate output is in the form of an object file for each source file.  
-2. __*make* Deduce the Recipes__ When a ‘.c’ file is used automatically in this way, it is also automatically added to the list of prerequisites. We can therefore omit the ‘.c’ files from the prerequisites, provided we omit the recipe. 
+2. __*make* Deduce the Recipes__ When a ‘.c’ file is used automatically in this way, it is also automatically added to the list of prerequisites. We can therefore omit the ‘.c’ files from the prerequisites, provided we omit the recipe.  
+
+### References 
+- [Offcial GNU make manual](https://www.gnu.org/s/make/manual/make.html)
+- [Stack Overflow](www.stackoverlow.com)
