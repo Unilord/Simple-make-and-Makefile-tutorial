@@ -109,10 +109,24 @@ all:
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 ```
--*make* Deduce the Recipes
-When a ‘.c’ file is used automatically in this way, it is also automatically added to the list of prerequisites. We can therefore omit the ‘.c’ files from the prerequisites, provided we omit the recipe. 
+Kernel Makefiles are part of the kbuild system, documented in various places on the web, for example [The relevant excerpt is here:](http://lwn.net/Articles/21835/) 
+Goal definitions are the main part (heart) of the kbuild Makefile. These lines define the files to be built, any special compilation options, and any subdirectories to be entered recursively.  
+The most simple kbuild makefile contains one line:  
 
-__Recursive Use of make__
+Example: obj-y += foo.o  
+
+This tell kbuild that there is one object in that directory named foo.o. foo.o will be build from foo.c or foo.S.  
+If foo.o shall be built as a module, the variable obj-m is used. Therefore the following pattern is often used:  
+
+Example: obj-$(CONFIG_FOO) += foo.o
+
+$(CONFIG_FOO) evaluates to either y (for built-in) or m (for module). If CONFIG_FOO is neither y nor m, then the file will not be compiled nor linked.  
+[This is an answer by Peter on Stackoverflow](http://stackoverflow.com/users/1401351/peter)
+
+- *all* and *clean* are phony targets.(refer to the section mentioned below)  
+- The *make* command you see in the code is a __Recursive Use of make__ that is calling *make* inside the *makefile* . Now this *make* needs a *makefile* too to know its job hence *__-C__* to change directory which contains big daddy of all the makefiles.
+- make M=dir clean Delete all automatically generated files
+- make M=dir modules Make all modules in specified dir
 
 
 
@@ -141,3 +155,5 @@ clean:
 
 __INFO that you might want to know__  
 1. cc -c  Compile or assemble the source files, but do not link.The linking stage simply is not done.The ultimate output is in the form of an object file for each source file.  
+2. __*make* Deduce the Recipes__
+When a ‘.c’ file is used automatically in this way, it is also automatically added to the list of prerequisites. We can therefore omit the ‘.c’ files from the prerequisites, provided we omit the recipe. 
